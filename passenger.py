@@ -20,7 +20,7 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
-FILE_NAME_STOPS = "서울시버스노선별정류소정보(20260506).xlsx"
+FILE_NAME_STOPS = "서울시버스노선별정류소정보.xlsx"
 FILE_NAME_ROUTES = "서울시버스노선ID정보.xlsx"
 
 DF_STOPS = pd.DataFrame()
