@@ -50,10 +50,8 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * c
 
 # -----------------------------------------------------
-# 4. 스마트 버스 데이터 저장소 및 모델
+# 4. 버스 대기열 데이터 저장소 및 구조
 # -----------------------------------------------------
-# 대기 승객 데이터를 저장할 임시 딕셔너리
-# 구조: { "노선번호": { "정류장명": 대기승객수 } }
 waiting_data: Dict[str, Dict[str, int]] = {}
 
 class RideRequest(BaseModel):
@@ -182,7 +180,7 @@ def get_real_bus_location(route_id: str, stop_id: str, ord: str):
                     plain_no = closest_bus['plainNo'] 
                     
                     if stops_left == 0:
-                        arrmsg = "현재 정류장 구간에 진입했습니다!"
+                        arrmsg = "현재 정류장 구간에 진입했습니다."
                     else:
                         arrmsg = f"{stops_left}번째 전 정류장 통과 중"
                         

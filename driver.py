@@ -25,7 +25,7 @@ except Exception as e:
     print(f"❌ 데이터 로드 실패: {e}")
 
 # -------------------------------------------------------------------
-# 2. 자동완성 콤보박스 위젯 (Mac OS 포커스 버그 완벽 해결판)
+# 2. 자동완성 콤보박스 위젯
 # -------------------------------------------------------------------
 class AutocompleteCombobox(ttk.Combobox):
     def set_completion_list(self, completion_list):
@@ -182,7 +182,7 @@ class DriverApp:
     def show_dashboard_screen(self):
         self.clear_window()
 
-        # 🎨 파란색 헤더 영역 (뒤로가기 버튼 포함)
+        # 파란색 헤더 영역 (뒤로가기 버튼 포함)
         header_frame = tk.Frame(self.root, bg="#2563EB", bd=0)
         header_frame.pack(fill="x")
         
@@ -193,7 +193,7 @@ class DriverApp:
         tk.Label(header_frame, text=f"{self.current_route}번 운행 대시보드", bg="#2563EB", fg="white", 
                  font=("맑은 고딕", 16, "bold"), pady=15).pack(side="left", fill="x", expand=True)
 
-        # 🎨 하얀색 메인 카드 영역
+        #  하얀색 메인 카드 영역
         card_frame = tk.Frame(self.root, bg="white", bd=0, highlightthickness=1, highlightbackground="#E5E7EB")
         card_frame.pack(fill="both", expand=True, padx=20, pady=20)
         
@@ -202,11 +202,11 @@ class DriverApp:
 
         tk.Label(d_info, text="이번 정류장", bg="white", fg="#6B7280", font=("맑은 고딕", 14, "bold")).pack(pady=(15, 0))
         
-        # 🎨 정류장 이름 (강조된 진한 회색)
+        # 정류장 이름 (강조된 진한 회색)
         self.stop_name_label = tk.Label(d_info, text=f"{self.next_stop}", bg="white", fg="#1F2937", font=("맑은 고딕", 24, "bold"))
         self.stop_name_label.pack(pady=(0, 25))
 
-        # 🎨 대기 승객 수 표시 (승객용 앱의 텍스트 박스와 유사한 연한 회색 박스)
+        # 대기 승객 수 표시
         count_frame = tk.Frame(d_info, bg="#F3F4F6", relief="flat", bd=0)
         count_frame.pack(fill="x", pady=10, ipady=30)
         
@@ -230,7 +230,6 @@ class DriverApp:
             res = requests.get(f"{SERVER_URL}/check_stop/{self.current_route}/{self.next_stop}", timeout=2)
             if res.status_code == 200:
                 count = res.json().get("count", 0)
-                # 🎨 0명이면 초록색(#10B981), 1명 이상이면 붉은색(#EF4444)으로 알림!
                 color = "#EF4444" if count > 0 else "#10B981"
                 self.waiting_count_label.config(text=str(count), fg=color)
         except Exception as e:
