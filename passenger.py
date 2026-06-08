@@ -261,7 +261,6 @@ class PassengerApp:
                         bus_lat = float(bus['gpsY'])
                         bus_lng = float(bus['gpsX'])
                         
-                        # 💡 [핵심 수정 2] 문자열 슬라이싱 [-4:]를 사용해 무조건 맨 뒤 4글자만 싹둑 잘라냅니다!
                         plain_no = bus['plainNo'][-4:]
                         
                         arrmsg = "🚨 구간 진입!" if stops_left == 0 else f"{stops_left}번째 전"
